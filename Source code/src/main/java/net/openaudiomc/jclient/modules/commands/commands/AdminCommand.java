@@ -21,7 +21,8 @@ public class AdminCommand implements CommandExecutor {
     private String prefix = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + "OpenAudioMc" + ChatColor.DARK_GRAY + "] " + ChatColor.GRAY;
     private OpenAudioApi api = new OpenAudioApi();
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public boolean onCommand(CommandSender s, Command command, String label, String[] args) {
 
         if (args.length == 0) {help(s); return true;}
@@ -40,13 +41,13 @@ public class AdminCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("play") && allowed(s, "play")) {
             if (args.length == 3) {
-                api.play(new Media(args[2]), args[1]);
+                api.play(new Media(args[2]), args[1], s);
                 s.sendMessage(prefix + "Successfully executed the command.");
                 return true;
             }
 
             if (args.length == 4) {
-                api.play(new Media(args[2]).setArgs(args[3]), args[1]);
+                api.play(new Media(args[2]).setArgs(args[3]), args[1], s);
                 s.sendMessage(prefix + "Successfully executed the command.");
                 return true;
             }
@@ -64,8 +65,7 @@ public class AdminCommand implements CommandExecutor {
                     s.sendMessage(prefix + "Generating skull.");
                     AudioListener l = OpenAudioMc.getInstance().getPlayerModule().getListeners().get(s.getName());
                     l.setPlacingSpeaker(args[2]);
-                    ItemStack skull = new ItemStack(Material.SKULL_ITEM);
-                    skull.setDurability((short) 3);
+                    ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
                     SkullMeta sm = (SkullMeta) skull.getItemMeta();
                     sm.setOwner("OpenAudioMc");
                     sm.setDisplayName(ChatColor.AQUA + "OpenAudioMc Speaker");
@@ -105,19 +105,19 @@ public class AdminCommand implements CommandExecutor {
                     return true;
                 }
             }
-            s.sendMessage(prefix + ChatColor.RED + "Correct ussage: /oa region crate <region> <source>");
+            s.sendMessage(prefix + ChatColor.RED + "Correct ussage: /oa region create <region> <source>");
             s.sendMessage(prefix + ChatColor.RED + "Correct ussage: /oa region delete <region>");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("stop") && allowed(s, "stop")) {
             if (args.length == 2) {
-                api.stop(args[1]);
+                api.stop(args[1], s);
                 s.sendMessage(prefix + "Successfully executed the command.");
                 return true;
             }
             if (args.length == 3) {
-                api.stopId(args[1], args[2]);
+                api.stopId(args[1], args[2], s);
                 s.sendMessage(prefix + "Successfully executed the command.");
                 return true;
             }
@@ -128,7 +128,7 @@ public class AdminCommand implements CommandExecutor {
         if(args[0].equalsIgnoreCase("hue") && allowed(s, "hue")) {
             if(args.length == 3) {
                 try {
-                    api.hueColor(args[1], args[2]);
+                    api.hueColor(args[1], args[2], s);
                     s.sendMessage(prefix + "Successfully executed the command.");
                     return true;
                 } catch (InvalidColorCodeException e) {
@@ -148,7 +148,7 @@ public class AdminCommand implements CommandExecutor {
                 }
 
                 s.sendMessage(prefix + "Successfully executed the command.");
-                api.hueColor(args[1], red, green, blue, brightness);
+                api.hueColor(args[1], red, green, blue, brightness, s);
                 return true;
             } else {
                 s.sendMessage(prefix + ChatColor.RED + "Correct ussage: /oa hue <name> <rgba string> or /oa hue <name> <red> <green> <blue> <brightness>");

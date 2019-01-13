@@ -1,17 +1,11 @@
 package net.openaudiomc.jclient.modules.socket.objects;
 
-import lombok.Getter;
-
-import lombok.NoArgsConstructor;
-
 import net.openaudiomc.jclient.modules.player.objects.AudioListener;
 import net.openaudiomc.jclient.modules.socket.enums.PacketCommand;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Getter
-@NoArgsConstructor
 public class OaPacket {
 
     private PacketCommand packetCommand;

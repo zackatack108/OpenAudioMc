@@ -1,13 +1,8 @@
 package net.openaudiomc.jclient.utils.config;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @ToString
 public class ConfigCommands {
 
     private String header;
@@ -23,4 +18,17 @@ public class ConfigCommands {
         }
         return list;
     }
+    
+    public void setHeader(String string) {
+		header = string;
+	}
+
+	public void setCommands(List<String> stringList) {
+		commands = stringList;
+	}
+
+	public List<String> getCommands() {
+		return commands;
+	}
+	
 }

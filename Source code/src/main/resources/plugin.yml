@@ -5,6 +5,7 @@ authors: [Mindgamesnl, ApocalypsjeNL, Snow]
 description: OpenAudiomc
 softdepend: [WorldGuard]
 website: https://openaudiomc.net/
+api-version: 1.13
 
 commands:
   audio:

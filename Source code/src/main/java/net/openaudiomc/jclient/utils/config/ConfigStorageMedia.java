@@ -1,13 +1,8 @@
 package net.openaudiomc.jclient.utils.config;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @ToString
 public class ConfigStorageMedia {
 
     private String name;
@@ -19,4 +14,20 @@ public class ConfigStorageMedia {
         list.add("      length: " + length);
         return list;
     }
+    
+    public void setName(String mediaConfig) {
+		name = mediaConfig;
+	}
+    
+    public void setLength(long Long) {
+		length = Long;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public long getLength() {
+		return length;
+	}
 }

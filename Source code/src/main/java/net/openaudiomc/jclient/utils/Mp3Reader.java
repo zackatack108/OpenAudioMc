@@ -32,7 +32,7 @@ public class Mp3Reader {
                 File file = new File(result);
                 Mp3File mp3file = new Mp3File(result);
                 cf.complete(mp3file.getLengthInSeconds());
-                Boolean fileExists = file.exists();
+                file.exists();
                 file.delete();
             } catch (IOException | InvalidDataException | UnsupportedTagException e) {
                 cf.complete(null);
@@ -46,7 +46,7 @@ public class Mp3Reader {
     public String downloadFromUrl(URL url, String localFilename) throws IOException {
         InputStream is = null;
         FileOutputStream fos = null;
-        String tempDir = System.getProperty("java.io.tmpdir");
+        System.getProperty("java.io.tmpdir");
         String outputPath = "plugins/OpenAudioMp3Meta";
         try {
             URLConnection urlConn = url.openConnection();

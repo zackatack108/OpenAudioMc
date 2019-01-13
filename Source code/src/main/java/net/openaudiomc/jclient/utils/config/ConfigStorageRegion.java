@@ -1,13 +1,8 @@
 package net.openaudiomc.jclient.utils.config;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @ToString
 public class ConfigStorageRegion {
 
     private String name;
@@ -19,4 +14,20 @@ public class ConfigStorageRegion {
         list.add("      src: '" + source + "'");
         return list;
     }
+
+    public void setName(String regionConfig) {
+		name = regionConfig;
+	}
+    
+    public void setSource(String string) {
+		source = string;
+	}
+    
+	public String getName() {
+		return name;
+	}
+	
+	public String getSource() {
+		return source;
+	}
 }

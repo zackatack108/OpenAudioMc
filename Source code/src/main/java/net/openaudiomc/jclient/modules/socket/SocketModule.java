@@ -3,8 +3,6 @@ package net.openaudiomc.jclient.modules.socket;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
-import lombok.Getter;
-
 import net.openaudiomc.jclient.OpenAudioMc;
 import net.openaudiomc.jclient.modules.player.objects.AudioListener;
 import net.openaudiomc.jclient.modules.socket.enums.PacketCommand;
@@ -25,9 +23,9 @@ import java.security.cert.X509Certificate;
 
 public class SocketModule {
 
-    @Getter private Socket socket;
-    @Getter private KeyHolder keyHolder;
-    @Getter private Boolean connected = false;
+    private Socket socket;
+    private KeyHolder keyHolder;
+    private Boolean connected = false;
 
     public SocketModule(OpenAudioMc plugin) {
         keyHolder = new KeyHolder(plugin);
@@ -170,5 +168,17 @@ public class SocketModule {
                 }
             }
     };
+
+	public KeyHolder getKeyHolder() {
+		return keyHolder;
+	}
+
+	public Socket getSocket() {
+		return socket;
+	}
+
+	public boolean getConnected() {
+		return connected;
+	}
 
 }

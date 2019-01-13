@@ -21,18 +21,18 @@ public class SetvolumeCommand implements CommandExecutor {
         }
 
         if (!(args.length > 0 && isInt(args[0]))) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getSetvolumefail()));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getvolumefail()));
             return true;
         }
 
         int volume = Integer.parseInt(args[0]);
 
         if (volume > 100 || volume < 0) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getSetvolumefail()));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getvolumefail()));
             return true;
         }
 
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getSetvolume().replaceAll("%volume%", volume + "")));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', OpenAudioMc.getInstance().getConf().getMessages().getvolume().replaceAll("%volume%", volume + "")));
         api.setVolume(((Player) sender), volume);
 
         return true;

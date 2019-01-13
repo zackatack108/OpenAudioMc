@@ -1,7 +1,5 @@
 package net.openaudiomc.jclient;
 
-import lombok.Getter;
-
 import net.openaudiomc.jclient.modules.commands.CommandsModule;
 import net.openaudiomc.jclient.modules.media.MediaModule;
 import net.openaudiomc.jclient.modules.player.PlayerModule;
@@ -14,17 +12,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class OpenAudioMc extends JavaPlugin {
 
-    @Getter private static OpenAudioMc instance;
+    private static OpenAudioMc instance;
 
-    @Getter private Config conf;
+    private Config conf;
 
-    @Getter private PlayerModule playerModule;
-    @Getter private SocketModule socketModule;
-    @Getter private CommandsModule commandsModule;
-    @Getter private ApiEndpoints apiEndpoints;
-    @Getter private Reflection reflection;
-    @Getter private MediaModule mediaModule;
-
+    private PlayerModule playerModule;
+    private SocketModule socketModule;
+    private CommandsModule commandsModule;
+    private ApiEndpoints apiEndpoints;
+    private Reflection reflection;
+    private MediaModule mediaModule;
+    
     @Override
     public void onEnable() {
         instance = this;
@@ -45,4 +43,37 @@ public final class OpenAudioMc extends JavaPlugin {
     public void onDisable() {
         socketModule.closeConnection();
     }
+    
+    public Config getConf() {
+    	return conf;
+    }
+
+	public static OpenAudioMc getInstance() {
+		return instance;
+	}
+
+	public PlayerModule getPlayerModule() {
+		return playerModule;
+	}
+	
+	public SocketModule getSocketModule() {
+		return socketModule;
+	}
+	
+	public CommandsModule getCommandsModule() {
+		return commandsModule;
+	}
+	
+	public ApiEndpoints getApiEndpoints() {
+		return apiEndpoints;
+	}
+	
+	public Reflection getReflection() {
+		return reflection;
+	}
+
+	public MediaModule getMediaModule() {
+		return mediaModule;
+	}
+	
 }

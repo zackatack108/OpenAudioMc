@@ -1,14 +1,11 @@
 package net.openaudiomc.jclient.modules.socket.objects;
 
-import lombok.Getter;
-
 import net.openaudiomc.jclient.OpenAudioMc;
 import net.openaudiomc.jclient.utils.UrlFetcher;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@Getter
 public class KeyHolder {
 
     private String publickey = "";
@@ -40,4 +37,12 @@ public class KeyHolder {
         publickey = pukey;
         privatekey = prkey;
     }
+
+	public String getPublickey() {
+		return publickey;
+	}
+	
+	public String getPrivatekey() {
+		return privatekey;
+	}
 }

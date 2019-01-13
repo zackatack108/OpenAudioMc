@@ -36,14 +36,14 @@ public class Reflection {
                 }
                 Object packet;
                 if (version.equals("v1_12_R1")) {
-                    Class chatEnum = Class.forName("net.minecraft.server." + version + ".ChatMessageType");
-                    Constructor chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"), chatEnum);
+                    Class<?> chatEnum = Class.forName("net.minecraft.server." + version + ".ChatMessageType");
+                    Constructor<?> chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"), chatEnum);
                     packet = chatConstructor.newInstance(chatClass, chatEnum.getEnumConstants()[0]);
                 } else if (version.equals("v1_7_R4") || version.equals("v1_7_R3") || version.equals("v1_7_R2") || version.equals("v1_7_R1")) {
-                    Constructor chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"));
+                    Constructor<?> chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"));
                     packet = chatConstructor.newInstance(chatClass);
                 } else {
-                    Constructor chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"), Byte.TYPE);
+                    Constructor<?> chatConstructor = Class.forName("net.minecraft.server." + version + ".PacketPlayOutChat").getConstructor(Class.forName("net.minecraft.server." + version + ".IChatBaseComponent"), Byte.TYPE);
                     packet = chatConstructor.newInstance(chatClass, (byte) 0);
                 }
 

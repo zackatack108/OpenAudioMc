@@ -1,15 +1,11 @@
 package net.openaudiomc.jclient.utils.config;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import net.openaudiomc.jclient.OpenAudioMc;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@Getter @Setter @ToString
 public class ConfigStorage {
 
     private String header;
@@ -41,6 +37,26 @@ public class ConfigStorage {
         }
         return list;
     }
+    
+    public void setHeader(String string) {
+		header = string;
+	}
+    
+    public void setSpeakerMedias(List<ConfigStorageSpeakerMedia> speakerMediaList) {
+		speakerMedias = speakerMediaList;		
+	}
+    
+    public void setSpeakerLocations(List<ConfigStorageSpeakerLocation> speakerLocations2) {
+    	speakerLocations = speakerLocations2;
+	}
+    
+    public void setRegions(List<ConfigStorageRegion> regionList) {
+		regions = regionList;
+	}
+    
+    public void setMedias(List<ConfigStorageMedia> mediaList) {
+		medias = mediaList;
+	}
 
     public void addSpeakerMedia(ConfigStorageSpeakerMedia speakerMedia) {
         for(ConfigStorageSpeakerMedia storageSpeakerMedia : speakerMedias) {
@@ -157,4 +173,16 @@ public class ConfigStorage {
         }
         return null;
     }
+
+	public List<ConfigStorageSpeakerMedia> getSpeakerMedias() {
+		return speakerMedias;
+	}
+
+	public List<ConfigStorageSpeakerLocation> getSpeakerLocations() {
+		return speakerLocations;
+	}
+
+	public List<ConfigStorageRegion> getRegions() {
+		return regions;
+	}
 }

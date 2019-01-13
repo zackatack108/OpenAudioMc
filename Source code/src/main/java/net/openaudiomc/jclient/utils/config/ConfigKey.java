@@ -1,13 +1,8 @@
 package net.openaudiomc.jclient.utils.config;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @ToString
 public class ConfigKey {
 
     private String header;
@@ -23,4 +18,28 @@ public class ConfigKey {
         list.add("  private: '" + privateKey + "'");
         return list;
     }
+    
+    public void setHeader(String string) {
+    	header = string;
+    }
+
+	public void setPublicKey(String string) {
+		publicKey = string;
+	}
+	
+	public void setPrivateKey(String string) {
+		privateKey = string;
+	}
+	
+	public String getHeader() {
+		return header;
+	}
+	
+	public String getPublicKey() {
+		return publicKey;
+	}
+	
+	public String getPrivateKey() {
+		return privateKey;
+	}
 }

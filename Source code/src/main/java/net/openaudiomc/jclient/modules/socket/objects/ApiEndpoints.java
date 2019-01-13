@@ -1,7 +1,6 @@
 package net.openaudiomc.jclient.modules.socket.objects;
 
 import com.google.gson.Gson;
-import lombok.Getter;
 import net.openaudiomc.jclient.OpenAudioMc;
 import net.openaudiomc.jclient.utils.UrlFetcher;
 import net.openaudiomc.jclient.utils.adapters.SnowYt;
@@ -36,7 +35,7 @@ public class ApiEndpoints {
     }
 
     private String root = "https://craftmendserver.eu";
-    @Getter  private int port = 6969;
+    private int port = 6969;
 
     public String getSocket() {
         return root + ":" + port;
@@ -45,5 +44,9 @@ public class ApiEndpoints {
     public String getRESTServer() {
         return root + ":" + port + "/genid";
     }
+
+	public int getPort() {
+		return port;
+	}
 
 }
